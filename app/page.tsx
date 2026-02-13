@@ -1,171 +1,148 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [images, setImages] = useState<HTMLImageElement[]>([]);
 
-  const frameCount = 119; // 👈 SET THIS to your exact number of frames
+  const frameCount = 120;
 
-  // Load & render on scroll
+  useEffect(() => {
+    const imgArray: HTMLImageElement[] = [];
+
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = `/sequence/frame_${String(i).padStart(3, "0")}.png`;
+      imgArray.push(img);
+    }
+
+    setImages(imgArray);
+  }, []);
+
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || images.length === 0) return;
 
     const context = canvas.getContext("2d");
     if (!context) return;
 
-    const images: HTMLImageElement[] = [];
-    let loadedImages = 0;
-
-    // Resize canvas
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    // Preload images
-    for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      const index = i.toString().padStart(3, "0");
-      img.src = `/sequence/frame_${index}.png`;
-
-      img.onload = () => {
-        loadedImages++;
-        if (loadedImages === 1) {
-          // Draw first frame immediately
-          context.drawImage(img, 0, 0, canvas.width, canvas.height);
-        }
-      };
-
-      images.push(img);
-    }
-
-    const render = (index: number) => {
-      if (!images[index]) return;
-
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(
-        images[index],
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-    };
-
-    const handleScroll = () => {
+    const render = () => {
       const scrollTop = window.scrollY;
       const maxScroll =
         document.body.scrollHeight - window.innerHeight;
-
-      if (maxScroll <= 0) return;
-
       const scrollFraction = scrollTop / maxScroll;
+
       const frameIndex = Math.min(
         frameCount - 1,
         Math.floor(scrollFraction * frameCount)
       );
 
-      render(frameIndex);
+      const img = images[frameIndex];
+      if (img) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(img, 0, 0, canvas.width, canvas.height);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", render);
+    render();
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, []);
+    return () => window.removeEventListener("scroll", render);
+  }, [images]);
+
+  const projects = [
+    {
+      title: "Bounty Creation Platform",
+      description:
+        "A full-stack platform where users can create, manage and track bounties. Designed with a clean UI and deployed live.",
+      tech: ["Next.js", "TypeScript", "Node.js"],
+      github: "https://github.com/suheeda/bounty-creation-platform",
+      live: "https://bounty-creation-platform.netlify.app/",
+    },
+    {
+      title: "Animated Portfolio Website",
+      description:
+        "Scroll-based frame animation portfolio built with Next.js and deployed on Vercel for high performance.",
+      tech: ["Next.js", "React", "Vercel"],
+      github: "https://github.com/suheeda/portfolio-project",
+      live: "https://portfolio-project-alpha-mocha.vercel.app/",
+    },
+  ];
 
   return (
-    <div className="relative">
-
-      {/* Canvas Animation */}
-      <canvas
-        ref={canvasRef}
-        className="sticky top-0 h-screen w-full bg-black pointer-events-none"
-      />
-
-      {/* Hero Text */}
-      <div className="absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center text-white z-10 px-6 text-center">
-        <h1 className="text-5xl font-bold mb-4">
-          Hi, I’m Suheeda SF
-        </h1>
-        <p className="text-xl max-w-md">
-          Python & Data Analytics enthusiast building projects with Next.js and React.
-        </p>
-      </div>
-
-      {/* Scroll space */}
-      <div style={{ height: "300vh" }} />
+    <main className="bg-black text-white">
+      {/* Scroll Animation Section */}
+      <section className="h-[200vh] relative">
+        <canvas
+          ref={canvasRef}
+          className="fixed top-0 left-0 w-full h-full"
+        />
+      </section>
 
       {/* Projects Section */}
-      <section className="relative z-20 bg-zinc-50 dark:bg-black py-16 px-6 flex flex-col items-center">
-        <h2 className="text-3xl font-semibold text-black dark:text-white mb-6">
+      <section className="relative z-10 px-6 md:px-20 py-20 bg-black">
+        <h2 className="text-4xl font-bold mb-12 text-center">
           My Projects
         </h2>
 
-        <ul className="list-disc list-inside space-y-2 text-zinc-700 dark:text-zinc-300 text-lg">
-          <li>
-            <a
-              href="#"
-              className="underline hover:text-blue-500"
+        <div className="grid md:grid-cols-2 gap-10">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
             >
-              Portfolio Website
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="underline hover:text-blue-500"
-            >
-              Data Analytics Dashboard
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="underline hover:text-blue-500"
-            >
-              Python Automation Scripts
-            </a>
-          </li>
-        </ul>
+              <h3 className="text-2xl font-semibold mb-3">
+                {project.title}
+              </h3>
+
+              <p className="text-gray-300 mb-4">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-4">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition"
+                >
+                  GitHub
+                </a>
+
+                <a
+                  href={project.live}
+                  target="_blank"
+                  className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition"
+                >
+                  Live Demo
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Contact Section */}
-      <section className="relative z-20 bg-zinc-50 dark:bg-black py-16 px-6 text-center">
-        <h2 className="text-3xl font-semibold text-black dark:text-white mb-4">
-          Contact Me
-        </h2>
-
-        <p className="text-zinc-700 dark:text-zinc-300 text-lg">
-          Email:{" "}
-          <a
-            href="mailto:suheedasf10@gmail.com"
-            className="underline hover:text-blue-500"
-          >
-            suheedasf10@gmail.com
-          </a>
-        </p>
-
-        <p className="text-zinc-700 dark:text-zinc-300 text-lg mt-2">
-          LinkedIn:{" "}
-          <a
-            href="https://www.linkedin.com/in/suheeda-s-f-21bb45331/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-blue-500"
-          >
-            linkedin.com/in/suheeda-s-f-21bb45331
-          </a>
+      <section className="text-center py-16 bg-black">
+        <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
+        <p>Email: suheedasf10@gmail.com</p>
+        <p className="mt-2">
+          LinkedIn: linkedin.com/in/suheeda-s-f-21bb45331
         </p>
       </section>
-
-    </div>
+    </main>
   );
 }
