@@ -15,8 +15,8 @@ export default function Home() {
     "Python & SQL",
     "ETL & Data Processing",
     "Workflow Optimization",
-    "Structured Data Handling",
-    "Associate Data Engineer / DataOps"
+    "Data Validation & Structured Handling",
+    "Associate Data Engineer / DataOps Role"
   ];
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Home() {
         Math.floor(scrollFraction * highlights.length)
       );
 
-      setActiveText((prev) => (prev !== textIndex ? textIndex : prev));
+      setActiveText(textIndex);
     };
 
     window.addEventListener("scroll", render);
@@ -74,7 +74,7 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white">
-      {/* Scroll Animation Section */}
+      {/* Animation Section */}
       <section className="relative h-[200vh]">
         <canvas
           ref={canvasRef}
@@ -84,11 +84,10 @@ export default function Home() {
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none">
           <h1
             key={activeText}
-            className="text-4xl md:text-6xl font-bold text-center 
-                       bg-linear-to-r from-blue-400 via-purple-500 to-pink-500
-                       text-transparent bg-clip-text
-                       transition-all duration-700 ease-in-out
-                       tracking-wide"
+            className="text-4xl md:text-6xl font-semibold text-center 
+                       bg-gradient-to-r from-blue-400 to-purple-500 
+                       text-transparent bg-clip-text 
+                       transition-all duration-700 ease-in-out"
           >
             {highlights[activeText]}
           </h1>
@@ -96,31 +95,25 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="relative z-10 px-6 md:px-20 py-24 bg-black">
-        <h2 className="text-4xl font-bold mb-14 text-center bg-linear-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-          Featured Projects
+      <section className="relative z-10 px-6 md:px-20 py-20 bg-black">
+        <h2 className="text-4xl font-bold mb-12 text-center">
+          My Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Project 1 */}
-          <div className="group bg-white/5 border border-white/10 
-                          backdrop-blur-lg p-8 rounded-2xl 
-                          shadow-xl hover:shadow-2xl 
-                          hover:scale-105 transition-all duration-500">
-            <h3 className="text-2xl font-semibold mb-4 group-hover:text-blue-400 transition">
+        <div className="grid md:grid-cols-2 gap-10">
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg">
+            <h3 className="text-2xl font-semibold mb-3">
               Bounty Creation Platform
             </h3>
-
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Multi-step wizard application with structured form validation,
-              state persistence, and optimized UI workflow.
+            <p className="text-gray-300 mb-6">
+              Multi-step wizard web application with structured form handling and state persistence.
             </p>
 
             <div className="flex gap-4">
               <a
                 href="https://github.com/suheeda/bounty-creation-platform"
                 target="_blank"
-                className="px-5 py-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition"
+                className="px-4 py-2 bg-gray-800 rounded-lg"
               >
                 GitHub
               </a>
@@ -128,32 +121,26 @@ export default function Home() {
               <a
                 href="https://bounty-creation-platform.netlify.app/"
                 target="_blank"
-                className="px-5 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition"
+                className="px-4 py-2 bg-blue-600 rounded-lg"
               >
                 Live Demo
               </a>
             </div>
           </div>
 
-          {/* Project 2 */}
-          <div className="group bg-white/5 border border-white/10 
-                          backdrop-blur-lg p-8 rounded-2xl 
-                          shadow-xl hover:shadow-2xl 
-                          hover:scale-105 transition-all duration-500">
-            <h3 className="text-2xl font-semibold mb-4 group-hover:text-purple-400 transition">
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg">
+            <h3 className="text-2xl font-semibold mb-3">
               Animated Portfolio Website
             </h3>
-
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Scroll-based cinematic frame animation built using Next.js,
-              optimized for performance and deployed on Vercel.
+            <p className="text-gray-300 mb-6">
+              Scroll-based frame animation portfolio built with Next.js and deployed on Vercel.
             </p>
 
             <div className="flex gap-4">
               <a
                 href="https://github.com/suheeda/portfolio-project"
                 target="_blank"
-                className="px-5 py-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition"
+                className="px-4 py-2 bg-gray-800 rounded-lg"
               >
                 GitHub
               </a>
@@ -161,7 +148,7 @@ export default function Home() {
               <a
                 href="https://portfolio-project-alpha-mocha.vercel.app/"
                 target="_blank"
-                className="px-5 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition"
+                className="px-4 py-2 bg-blue-600 rounded-lg"
               >
                 Live Demo
               </a>
@@ -170,18 +157,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="text-center py-20 bg-black border-t border-white/10">
-        <h2 className="text-3xl font-bold mb-6 bg-linear-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-          Let’s Connect
-        </h2>
-
-        <p className="text-gray-400 mb-2">
-          suheedasf10@gmail.com
-        </p>
-
-        <p className="text-gray-400">
-          linkedin.com/in/suheeda-s-f-21bb45331
+      {/* Contact */}
+      <section className="text-center py-16 bg-black">
+        <h2 className="text-3xl font-bold mb-4">Contact</h2>
+        <p>Email: suheedasf10@gmail.com</p>
+        <p className="mt-2">
+          LinkedIn: linkedin.com/in/suheeda-s-f-21bb45331
         </p>
       </section>
     </main>
