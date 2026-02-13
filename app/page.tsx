@@ -167,9 +167,11 @@ export default function Home() {
       {/* Contact Section */}
       <section className="relative z-20 text-center py-16 bg-black">
         <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
-        <p>Email: suheedasf10@gmail.com</p>
+        <p>
+          Email: <a href="mailto:suheedasf10@gmail.com" className="text-blue-500 hover:underline">suheedasf10@gmail.com</a>
+        </p>
         <p className="mt-2">
-          LinkedIn: linkedin.com/in/suheeda-s-f-21bb45331
+          LinkedIn: <a href="https://linkedin.com/in/suheeda-s-f-21bb45331" target="_blank" className="text-blue-500 hover:underline">linkedin.com/in/suheeda-s-f-21bb45331</a>
         </p>
       </section>
     </main>
