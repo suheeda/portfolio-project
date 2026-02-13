@@ -78,8 +78,24 @@ export default function Home() {
       <section className="h-[200vh] relative">
         <canvas
           ref={canvasRef}
-          className="fixed top-0 left-0 w-full h-full -z-10"
+          className="fixed top-0 left-0 w-full h-full"
         />
+      </section>
+
+      {/* Professional Title Section */}
+      <section className="relative z-10 px-6 md:px-20 py-20 bg-black text-center">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">
+          Entry-Level Data Engineer
+        </h1>
+
+        <p className="text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          Entry-level Data Engineer with hands-on experience in Python-based data processing,
+          analytics, and machine learning projects. Skilled in SQL, Pandas, NumPy, and
+          building data-driven applications with a strong focus on data validation,
+          workflow optimization, and structured data handling. Experience working with
+          high-volume operational datasets at TCS. Immediate joiner seeking an
+          Associate Data Engineer / DataOps role.
+        </p>
       </section>
 
       {/* Projects Section */}
@@ -136,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="relative z-10 text-center py-16 bg-black">
+      <section className="text-center py-16 bg-black">
         <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
         <p>Email: suheedasf10@gmail.com</p>
         <p className="mt-2">
