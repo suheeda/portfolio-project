@@ -5,8 +5,19 @@ import { useEffect, useRef, useState } from "react";
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
+  const [activeText, setActiveText] = useState(0);
 
   const frameCount = 120;
+
+  const highlights = [
+    "Suheeda S F",
+    "Entry-Level Data Engineer",
+    "Python & SQL",
+    "ETL & Data Processing",
+    "Workflow Optimization",
+    "Data Validation & Structured Handling",
+    "Associate Data Engineer / DataOps Role"
+  ];
 
   useEffect(() => {
     const imgArray: HTMLImageElement[] = [];
@@ -29,8 +40,7 @@ export default function Home() {
 
     const render = () => {
       const scrollTop = window.scrollY;
-      const maxScroll =
-        document.body.scrollHeight - window.innerHeight;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / maxScroll;
 
       const frameIndex = Math.min(
@@ -45,6 +55,13 @@ export default function Home() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
       }
+
+      const textIndex = Math.min(
+        highlights.length - 1,
+        Math.floor(scrollFraction * highlights.length)
+      );
+
+      setActiveText(textIndex);
     };
 
     window.addEventListener("scroll", render);
@@ -73,29 +90,25 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-black text-white">
+    <main className="bg-black text-white relative z-0">
       {/* Scroll Animation Section */}
       <section className="h-[200vh] relative">
         <canvas
           ref={canvasRef}
-          className="fixed top-0 left-0 w-full h-full"
+          className="fixed top-0 left-0 w-full h-full z-0"
         />
-      </section>
 
-      {/* Professional Title Section */}
-      <section className="relative z-10 px-6 md:px-20 py-20 bg-black text-center">
-        <h1 className="text-3xl md:text-4xl font-bold mb-6">
-          Entry-Level Data Engineer
-        </h1>
-
-        <p className="text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Entry-level Data Engineer with hands-on experience in Python-based data processing,
-          analytics, and machine learning projects. Skilled in SQL, Pandas, NumPy, and
-          building data-driven applications with a strong focus on data validation,
-          workflow optimization, and structured data handling. Experience working with
-          high-volume operational datasets at TCS. Immediate joiner seeking an
-          Associate Data Engineer / DataOps role.
-        </p>
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-10">
+          <h1
+            key={activeText}
+            className="text-4xl md:text-6xl font-semibold text-center 
+                       bg-gradient-to-r from-blue-400 to-purple-500 
+                       text-transparent bg-clip-text 
+                       transition-all duration-700 ease-in-out"
+          >
+            {highlights[activeText]}
+          </h1>
+        </div>
       </section>
 
       {/* Projects Section */}
@@ -152,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="text-center py-16 bg-black">
+      <section className="relative z-20 text-center py-16 bg-black">
         <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
         <p>Email: suheedasf10@gmail.com</p>
         <p className="mt-2">
