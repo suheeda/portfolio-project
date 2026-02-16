@@ -10,13 +10,12 @@ export default function Home() {
   const frameCount = 120;
 
   const highlights = [
-    "Entry-level AI/ML Engineer",
-    "Building efficient & supporting systems",
-    "Skilled in ML fundamentals & Python",
-    "Hands-on ML/NLP projects",
-    "Scalable models & performance optimization",
-    "End-to-end deployment",
-    "Quick learner seeking AI/ML roles"
+    "Entry-level Data Engineer with hands-on Python experience",
+    "Skilled in SQL, Pandas, NumPy, and analytics",
+    "Building data-driven applications with data validation",
+    "Workflow optimization & structured data handling",
+    "Experience with high-volume operational datasets at TCS",
+    "Immediate joiner seeking Associate Data Engineer / DataOps role"
   ];
 
   useEffect(() => {
