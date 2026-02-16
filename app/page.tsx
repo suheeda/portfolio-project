@@ -10,13 +10,13 @@ export default function Home() {
   const frameCount = 120;
 
   const highlights = [
-    "Suheeda S F",
-    "Entry-Level Data Engineer",
-    "Python & SQL",
-    "ETL & Data Processing",
-    "Workflow Optimization",
-    "Data Validation & Structured Handling",
-    "Associate Data Engineer / DataOps Role"
+    "Entry-level AI/ML Engineer",
+    "Building efficient & supporting systems",
+    "Skilled in ML fundamentals & Python",
+    "Hands-on ML/NLP projects",
+    "Scalable models & performance optimization",
+    "End-to-end deployment",
+    "Quick learner seeking AI/ML roles"
   ];
 
   useEffect(() => {
@@ -87,6 +87,14 @@ export default function Home() {
       github: "https://github.com/suheeda/portfolio-project",
       live: "https://portfolio-project-alpha-mocha.vercel.app/",
     },
+    {
+      title: "News Analyzer Dashboard",
+      description:
+        "An end-to-end data engineering project that fetches live news using NewsAPI, performs sentiment analysis with VADER, stores processed data in SQLite, and visualizes insights through a Streamlit dashboard.",
+      tech: ["Python", "Streamlit", "SQLite", "VADER", "NewsAPI"],
+      github: "https://github.com/suheeda/news-analyzer",
+      live: "https://github.com/suheeda/news-analyzer", // points to GitHub repo with screenshots
+    },
   ];
 
   return (
@@ -156,7 +164,9 @@ export default function Home() {
                   target="_blank"
                   className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition"
                 >
-                  Live Demo
+                  {project.title === "News Analyzer Dashboard"
+                    ? "Live Demo (Screenshots)"
+                    : "Live Demo"}
                 </a>
               </div>
             </div>
@@ -168,10 +178,23 @@ export default function Home() {
       <section className="relative z-20 text-center py-16 bg-black">
         <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
         <p>
-          Email: <a href="mailto:suheedasf10@gmail.com" className="text-blue-500 hover:underline">suheedasf10@gmail.com</a>
+          Email:{" "}
+          <a
+            href="mailto:suheedasf10@gmail.com"
+            className="text-blue-500 hover:underline"
+          >
+            suheedasf10@gmail.com
+          </a>
         </p>
         <p className="mt-2">
-          LinkedIn: <a href="https://linkedin.com/in/suheeda-s-f-21bb45331" target="_blank" className="text-blue-500 hover:underline">linkedin.com/in/suheeda-s-f-21bb45331</a>
+          LinkedIn:{" "}
+          <a
+            href="https://linkedin.com/in/suheeda-s-f-21bb45331"
+            target="_blank"
+            className="text-blue-500 hover:underline"
+          >
+            linkedin.com/in/suheeda-s-f-21bb45331
+          </a>
         </p>
       </section>
     </main>
