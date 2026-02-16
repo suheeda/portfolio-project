@@ -102,10 +102,7 @@ export default function Home() {
 
       {/* Scroll Animation Section (UNCHANGED) */}
       <section className="h-[200vh] relative">
-        <canvas
-          ref={canvasRef}
-          className="fixed top-0 left-0 w-full h-full z-0"
-        />
+        <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0" />
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-10">
           <h1
             key={activeText}
@@ -119,28 +116,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section — Elite Apple Dark Glass */}
-      <section className="relative z-10 px-6 md:px-20 py-28
-        bg-gradient-to-br from-[#0f0f11] via-[#1a1a1d] to-[#111114]">
+      {/* Projects Section (UNCHANGED) */}
+      <section className="relative z-10 px-6 md:px-20 py-24 
+        bg-gradient-to-br from-[#1c1c1e] via-[#2c2c2e] to-[#1c1c1e] text-gray-100">
 
-        <h2 className="text-4xl font-bold mb-20 text-center 
+        <h2 className="text-4xl font-bold mb-16 text-center 
           bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 
           text-transparent bg-clip-text">
           My Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-14">
+        <div className="grid md:grid-cols-2 gap-12">
           {projects.map((project, index) => (
             <div
               key={index}
               className="group relative 
-                         bg-white/5 backdrop-blur-2xl
+                         bg-white/5 backdrop-blur-xl
                          p-8 rounded-3xl 
                          border border-white/10
                          transition-all duration-500 
-                         hover:scale-105
+                         hover:scale-105 
                          hover:border-purple-400/40
-                         hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]"
+                         hover:shadow-2xl 
+                         hover:shadow-purple-500/20"
             >
               <h3 className="text-2xl font-semibold mb-4 text-white 
                              group-hover:text-purple-300 transition">
@@ -164,25 +162,15 @@ export default function Home() {
               </div>
 
               <div className="flex gap-4">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-black transition"
-                >
+                <a href={project.github} target="_blank" rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-black transition">
                   GitHub
                 </a>
 
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a href={project.live} target="_blank" rel="noopener noreferrer"
                   className="px-4 py-2 rounded-lg 
                              bg-gradient-to-r from-blue-500 to-purple-600
-                             text-white hover:scale-105 
-                             hover:shadow-[0_0_25px_rgba(99,102,241,0.6)]
-                             transition duration-300"
-                >
+                             text-white hover:scale-105 transition duration-300">
                   Live Demo 🚀
                 </a>
               </div>
@@ -191,96 +179,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section — Opposite Deep Dark Glass */}
-      <section className="relative z-20 py-28 flex justify-center 
-        bg-gradient-to-br from-[#1f1f23] via-[#2b2b30] to-[#1a1a1f]">
+      {/* Contact Section (UPDATED ONLY HERE) */}
+      <section className="relative z-20 py-24 flex justify-center 
+        bg-gradient-to-br from-[#2c2c2e] via-[#1c1c1e] to-black">
 
         <div className="w-full max-w-3xl 
-                        bg-white/5 backdrop-blur-2xl
+                        bg-white/5 backdrop-blur-xl
                         p-12 rounded-3xl 
-                        shadow-[0_0_60px_rgba(168,85,247,0.15)]
-                        border border-white/10
-                        hover:shadow-[0_0_80px_rgba(168,85,247,0.25)]
-                        transition-all duration-500">
+                        shadow-2xl 
+                        border border-white/10">
 
-          <h2 className="text-4xl font-bold text-center mb-6 
+          <h2 className="text-4xl font-bold text-center mb-4 
             bg-gradient-to-r from-purple-400 to-pink-500 
             text-transparent bg-clip-text">
             Get In Touch
           </h2>
 
-          <p className="text-center text-gray-400 mb-12">
-            Let’s build something impactful together.
+          <p className="text-center text-gray-400 mb-10">
+            Have a project in mind? Let’s build something impactful.
           </p>
 
           <form
             className="space-y-8"
             onSubmit={(e) => {
               e.preventDefault();
-              alert("Message sent successfully 🚀");
+
+              const name = (document.getElementById("name") as HTMLInputElement).value;
+              const email = (document.getElementById("email") as HTMLInputElement).value;
+              const message = (document.getElementById("message") as HTMLTextAreaElement).value;
+
+              const mailtoLink = `mailto:suheedasf10@gmail.com?subject=Portfolio Inquiry from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+
+              window.location.href = mailtoLink;
             }}
           >
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="relative">
-                <input
-                  type="text"
-                  required
-                  className="peer w-full bg-transparent border-b border-gray-600 
-                             py-3 focus:outline-none focus:border-purple-500 
-                             text-white transition-all duration-300"
-                />
-                <label className="absolute left-0 top-3 text-gray-400 
-                             peer-focus:-top-4 peer-focus:text-sm 
-                             peer-focus:text-purple-400 
-                             transition-all duration-300">
-                  Your Name
-                </label>
-              </div>
+              <input id="name" type="text" required placeholder="Your Name"
+                className="w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-500 text-white" />
 
-              <div className="relative">
-                <input
-                  type="email"
-                  required
-                  className="peer w-full bg-transparent border-b border-gray-600 
-                             py-3 focus:outline-none focus:border-purple-500 
-                             text-white transition-all duration-300"
-                />
-                <label className="absolute left-0 top-3 text-gray-400 
-                             peer-focus:-top-4 peer-focus:text-sm 
-                             peer-focus:text-purple-400 
-                             transition-all duration-300">
-                  Your Email
-                </label>
-              </div>
+              <input id="email" type="email" required placeholder="Your Email"
+                className="w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-500 text-white" />
             </div>
 
-            <div className="relative">
-              <textarea
-                rows={4}
-                required
-                className="peer w-full bg-transparent border-b border-gray-600 
-                           py-3 focus:outline-none focus:border-purple-500 
-                           text-white transition-all duration-300"
-              />
-              <label className="absolute left-0 top-3 text-gray-400 
-                           peer-focus:-top-4 peer-focus:text-sm 
-                           peer-focus:text-purple-400 
-                           transition-all duration-300">
-                Tell me about your project...
-              </label>
-            </div>
+            <textarea id="message" rows={4} required placeholder="Tell me about your project..."
+              className="w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-500 text-white" />
 
-            <button
-              type="submit"
+            <button type="submit"
               className="w-full py-4 rounded-xl font-semibold 
                          bg-gradient-to-r from-purple-500 to-pink-600 
-                         hover:scale-105 
-                         hover:shadow-[0_0_35px_rgba(236,72,153,0.6)]
-                         transition-all duration-300"
-            >
+                         hover:scale-105 transition-all duration-300">
               Send Message ✨
             </button>
           </form>
+
+          <div className="mt-10 text-center space-y-3">
+            <a href="mailto:suheedasf10@gmail.com"
+              className="text-purple-400 hover:text-pink-400 transition">
+              📧 suheedasf10@gmail.com
+            </a>
+
+            <br />
+
+            <a href="https://www.linkedin.com/in/suheeda-s-f-21bb45331/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-pink-400 transition">
+              🔗 LinkedIn Profile
+            </a>
+          </div>
+
         </div>
       </section>
     </main>
