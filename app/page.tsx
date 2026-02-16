@@ -10,12 +10,13 @@ export default function Home() {
   const frameCount = 120;
 
   const highlights = [
-    "Entry-level Data Engineer with hands-on Python experience",
-    "Skilled in SQL, Pandas, NumPy, and analytics",
-    "Building data-driven applications with data validation",
-    "Workflow optimization & structured data handling",
-    "Experience with high-volume operational datasets at TCS",
-    "Immediate joiner seeking Associate Data Engineer / DataOps role"
+    "Entry-Level Data Engineer",
+    "Python-Based Data Processing",
+    "Eager to Learn SQL, Pandas & NumPy",
+    "Data Validation & Structured Handling",
+    "Workflow Optimization",
+    "TCS | High-Volume Operational Datasets",
+    "Open to Associate Data Engineer / DataOps Roles"
   ];
 
   useEffect(() => {
@@ -71,28 +72,36 @@ export default function Home() {
 
   const projects = [
     {
+      title: "Health Risk Predictor App",
+      description:
+        "Developed a Python application using Streamlit and Scikit-learn for health risk classification. Implemented Pandas and NumPy for preprocessing and integrated Matplotlib and Seaborn for health trend visualizations. Enables users to identify potential health risks through data-driven analysis.",
+      tech: [
+        "Python",
+        "Streamlit",
+        "Scikit-learn",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn"
+      ],
+      github: "https://github.com/suheeda/health-risk-predictor",
+      live: "https://secure-encouragement-production-1faf.up.railway.app/",
+    },
+    {
+      title: "News Analyzer Dashboard",
+      description:
+        "End-to-end data engineering project that fetches live news using NewsAPI, performs sentiment analysis with VADER, stores processed data in SQLite, and visualizes insights through a Streamlit dashboard.",
+      tech: ["Python", "Streamlit", "SQLite", "VADER", "NewsAPI"],
+      github: "https://github.com/suheeda/news-analyzer",
+      live: "https://github.com/suheeda/news-analyzer",
+    },
+    {
       title: "Bounty Creation Platform",
       description:
         "A full-stack platform where users can create, manage and track bounties. Designed with a clean UI and deployed live.",
       tech: ["Next.js", "TypeScript", "Node.js"],
       github: "https://github.com/suheeda/bounty-creation-platform",
       live: "https://bounty-creation-platform.netlify.app/",
-    },
-    {
-      title: "Animated Portfolio Website",
-      description:
-        "Scroll-based frame animation portfolio built with Next.js and deployed on Vercel for high performance.",
-      tech: ["Next.js", "React", "Vercel"],
-      github: "https://github.com/suheeda/portfolio-project",
-      live: "https://portfolio-project-alpha-mocha.vercel.app/",
-    },
-    {
-      title: "News Analyzer Dashboard",
-      description:
-        "An end-to-end data engineering project that fetches live news using NewsAPI, performs sentiment analysis with VADER, stores processed data in SQLite, and visualizes insights through a Streamlit dashboard.",
-      tech: ["Python", "Streamlit", "SQLite", "VADER", "NewsAPI"],
-      github: "https://github.com/suheeda/news-analyzer",
-      live: "https://github.com/suheeda/news-analyzer", // points to GitHub repo with screenshots
     },
   ];
 
@@ -153,6 +162,7 @@ export default function Home() {
                 <a
                   href={project.github}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition"
                 >
                   GitHub
@@ -161,11 +171,10 @@ export default function Home() {
                 <a
                   href={project.live}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition"
                 >
-                  {project.title === "News Analyzer Dashboard"
-                    ? "Live Demo (Screenshots)"
-                    : "Live Demo"}
+                  Live Demo
                 </a>
               </div>
             </div>
@@ -190,6 +199,7 @@ export default function Home() {
           <a
             href="https://linkedin.com/in/suheeda-s-f-21bb45331"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-500 hover:underline"
           >
             linkedin.com/in/suheeda-s-f-21bb45331
