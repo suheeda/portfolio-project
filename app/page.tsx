@@ -76,7 +76,7 @@ export default function Home() {
       description:
         "Streamlit + Scikit-learn based ML app for health risk classification with preprocessing, feature engineering, and data visualization.",
       tech: ["Python", "Streamlit", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-      github: "https://github.com/suheeda/health-risk-predictor",
+      github: "https://github.com/suheeda/RiskPredictor",
       live: "https://secure-encouragement-production-1faf.up.railway.app/",
     },
     {
@@ -120,9 +120,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section — LIGHT THEME */}
+      {/* Projects Section — GRAY THEME */}
       <section className="relative z-10 px-6 md:px-20 py-24 
-        bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900">
+        bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 text-gray-900">
 
         <h2 className="text-4xl font-bold mb-16 text-center 
           bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 
@@ -189,8 +189,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section — DARK CONTRAST */}
-      <section className="relative z-20 py-24 flex justify-center bg-gray-950">
+      {/* Contact Section — DARK GRAY THEME */}
+      <section className="relative z-20 py-24 flex justify-center 
+        bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800">
+
         <div className="w-full max-w-3xl bg-gray-900 p-12 rounded-3xl 
                         shadow-2xl border border-purple-500/30">
 
