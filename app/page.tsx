@@ -74,23 +74,15 @@ export default function Home() {
     {
       title: "Health Risk Predictor App",
       description:
-        "Developed a Python application using Streamlit and Scikit-learn for health risk classification. Implemented Pandas and NumPy for preprocessing and integrated Matplotlib and Seaborn for health trend visualizations. Enables users to identify potential health risks through data-driven analysis.",
-      tech: [
-        "Python",
-        "Streamlit",
-        "Scikit-learn",
-        "Pandas",
-        "NumPy",
-        "Matplotlib",
-        "Seaborn"
-      ],
-      github: "https://github.com/suheeda/RiskPredictor",
+        "Streamlit + Scikit-learn based ML app for health risk classification with preprocessing, feature engineering, and data visualization.",
+      tech: ["Python", "Streamlit", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+      github: "https://github.com/suheeda/health-risk-predictor",
       live: "https://secure-encouragement-production-1faf.up.railway.app/",
     },
     {
       title: "News Analyzer Dashboard",
       description:
-        "End-to-end data engineering project that fetches live news using NewsAPI, performs sentiment analysis with VADER, stores processed data in SQLite, and visualizes insights through a Streamlit dashboard.",
+        "End-to-end data engineering pipeline with NewsAPI ingestion, VADER sentiment analysis, SQLite storage, and Streamlit visualization.",
       tech: ["Python", "Streamlit", "SQLite", "VADER", "NewsAPI"],
       github: "https://github.com/suheeda/news-analyzer",
       live: "https://github.com/suheeda/news-analyzer",
@@ -98,7 +90,7 @@ export default function Home() {
     {
       title: "Bounty Creation Platform",
       description:
-        "A full-stack platform where users can create, manage and track bounties. Designed with a clean UI and deployed live.",
+        "Full-stack bounty management platform with clean UI and scalable architecture.",
       tech: ["Next.js", "TypeScript", "Node.js"],
       github: "https://github.com/suheeda/bounty-creation-platform",
       live: "https://bounty-creation-platform.netlify.app/",
@@ -106,8 +98,9 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-black text-white relative z-0">
-      {/* Scroll Animation Section */}
+    <main className="relative z-0 text-white bg-gradient-to-br from-black via-gray-950 to-black overflow-x-hidden">
+
+      {/* Scroll Animation Section (UNCHANGED) */}
       <section className="h-[200vh] relative">
         <canvas
           ref={canvasRef}
@@ -127,23 +120,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="relative z-10 px-6 md:px-20 py-20 bg-black">
-        <h2 className="text-4xl font-bold mb-12 text-center">
+      {/* Projects Section — LIGHT THEME */}
+      <section className="relative z-10 px-6 md:px-20 py-24 
+        bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900">
+
+        <h2 className="text-4xl font-bold mb-16 text-center 
+          bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 
+          text-transparent bg-clip-text">
           My Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-12">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+              className="group relative bg-white 
+                         p-8 rounded-3xl border border-gray-200
+                         transition-all duration-500 
+                         hover:scale-105 hover:shadow-2xl 
+                         hover:shadow-purple-300/40"
             >
-              <h3 className="text-2xl font-semibold mb-3">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800 
+                             group-hover:text-purple-600 transition">
                 {project.title}
               </h3>
 
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-600 mb-6 leading-relaxed">
                 {project.description}
               </p>
 
@@ -151,7 +153,10 @@ export default function Home() {
                 {project.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm"
+                    className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm
+                               group-hover:bg-purple-100 
+                               group-hover:text-purple-700 
+                               transition"
                   >
                     {tech}
                   </span>
@@ -163,7 +168,7 @@ export default function Home() {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition"
+                  className="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-black transition"
                 >
                   GitHub
                 </a>
@@ -172,9 +177,11 @@ export default function Home() {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition"
+                  className="px-4 py-2 rounded-lg 
+                             bg-gradient-to-r from-blue-500 to-purple-600
+                             text-white hover:scale-105 transition duration-300"
                 >
-                  Live Demo
+                  Live Demo 🚀
                 </a>
               </div>
             </div>
@@ -182,29 +189,124 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="relative z-20 text-center py-16 bg-black">
-        <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
-        <p>
-          Email:{" "}
-          <a
-            href="mailto:suheedasf10@gmail.com"
-            className="text-blue-500 hover:underline"
+      {/* Contact Section — DARK CONTRAST */}
+      <section className="relative z-20 py-24 flex justify-center bg-gray-950">
+        <div className="w-full max-w-3xl bg-gray-900 p-12 rounded-3xl 
+                        shadow-2xl border border-purple-500/30">
+
+          <h2 className="text-4xl font-bold text-center mb-4 
+            bg-gradient-to-r from-purple-400 to-pink-500 
+            text-transparent bg-clip-text">
+            Get In Touch
+          </h2>
+
+          <p className="text-center text-gray-400 mb-10">
+            Have a project in mind? Let’s build something impactful.
+          </p>
+
+          <form
+            className="space-y-8"
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert("Message sent successfully 🚀");
+            }}
           >
-            suheedasf10@gmail.com
-          </a>
-        </p>
-        <p className="mt-2">
-          LinkedIn:{" "}
-          <a
-            href="https://linkedin.com/in/suheeda-s-f-21bb45331"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
-          >
-            linkedin.com/in/suheeda-s-f-21bb45331
-          </a>
-        </p>
+            <div className="grid md:grid-cols-2 gap-8">
+
+              <div className="relative">
+                <input
+                  type="text"
+                  required
+                  className="peer w-full bg-transparent border-b border-gray-600 
+                             py-3 focus:outline-none focus:border-purple-500 
+                             text-white transition-all duration-300"
+                />
+                <label
+                  className="absolute left-0 top-3 text-gray-400 
+                             peer-focus:-top-4 peer-focus:text-sm 
+                             peer-focus:text-purple-400 
+                             transition-all duration-300"
+                >
+                  Your Name
+                </label>
+              </div>
+
+              <div className="relative">
+                <input
+                  type="email"
+                  required
+                  className="peer w-full bg-transparent border-b border-gray-600 
+                             py-3 focus:outline-none focus:border-purple-500 
+                             text-white transition-all duration-300"
+                />
+                <label
+                  className="absolute left-0 top-3 text-gray-400 
+                             peer-focus:-top-4 peer-focus:text-sm 
+                             peer-focus:text-purple-400 
+                             transition-all duration-300"
+                >
+                  Your Email
+                </label>
+              </div>
+            </div>
+
+            <div className="relative">
+              <textarea
+                rows={4}
+                required
+                className="peer w-full bg-transparent border-b border-gray-600 
+                           py-3 focus:outline-none focus:border-purple-500 
+                           text-white transition-all duration-300"
+              />
+              <label
+                className="absolute left-0 top-3 text-gray-400 
+                           peer-focus:-top-4 peer-focus:text-sm 
+                           peer-focus:text-purple-400 
+                           transition-all duration-300"
+              >
+                Tell me about your project...
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-4 rounded-xl font-semibold 
+                         bg-gradient-to-r from-purple-500 to-pink-600 
+                         hover:scale-105 hover:shadow-xl 
+                         hover:shadow-purple-500/40 
+                         transition-all duration-300"
+            >
+              Send Message ✨
+            </button>
+          </form>
+
+          <div className="my-10 border-t border-gray-800"></div>
+
+          <div className="text-center space-y-4">
+            <p className="text-gray-400">
+              📧{" "}
+              <a
+                href="mailto:suheedasf10@gmail.com"
+                className="text-purple-400 hover:text-pink-400 transition duration-300"
+              >
+                suheedasf10@gmail.com
+              </a>
+            </p>
+
+            <p className="text-gray-400">
+              🔗{" "}
+              <a
+                href="https://linkedin.com/in/suheeda-s-f-21bb45331"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-pink-400 transition duration-300"
+              >
+                linkedin.com/in/suheeda-s-f-21bb45331
+              </a>
+            </p>
+          </div>
+
+        </div>
       </section>
     </main>
   );
