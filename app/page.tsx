@@ -70,39 +70,15 @@ export default function Home() {
     return () => window.removeEventListener("scroll", render);
   }, [images]);
 
-  // ⭐ UPDATED PROJECTS ONLY
+  // ⭐ REORDERED PROJECTS ONLY (ALL INCLUDED)
   const projects = [
     {
-      title: "Health Risk Predictor App",
+      title: "Founder OS",
       description:
-        "Streamlit + Scikit-learn based ML app for health risk classification with preprocessing, feature engineering, and data visualization.",
-      tech: ["Python", "Streamlit", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-      github: "https://github.com/suheeda/RiskPredictor",
-      live: "https://secure-encouragement-production-1faf.up.railway.app/",
-    },
-    {
-      title: "News Analyzer Dashboard",
-      description:
-        "End-to-end data engineering pipeline with NewsAPI ingestion, VADER sentiment analysis, SQLite storage, and Streamlit visualization.",
-      tech: ["Python", "Streamlit", "SQLite", "VADER", "NewsAPI"],
-      github: "https://github.com/suheeda/news-analyzer",
-      live: "https://github.com/suheeda/news-analyzer",
-    },
-    {
-      title: "Bounty Creation Platform",
-      description:
-        "Full-stack bounty management platform with clean UI and scalable architecture.",
-      tech: ["Next.js", "TypeScript", "Node.js"],
-      github: "https://github.com/suheeda/bounty-creation-platform",
-      live: "https://bounty-creation-platform.netlify.app/",
-    },
-    {
-      title: "Student Table Assignment",
-      description:
-        "Full-stack student management system with CRUD operations and responsive UI.",
-      tech: ["React", "Node.js", "MongoDB"],
-      github: "https://github.com/suheeda/Full-Stack-Assignment-Students-Table",
-      live: "https://students-table-assignment.netlify.app/",
+        "Founder OS assignment project with full-stack frontend deployment and structured UI system.",
+      tech: ["Next.js", "TypeScript"],
+      github: "https://github.com/suheeda/founder-os",
+      live: "https://founder-os-frontend.onrender.com/",
     },
     {
       title: "O2C Graph Intelligence",
@@ -113,12 +89,36 @@ export default function Home() {
       live: "https://o2c-graph-intelligence.onrender.com/",
     },
     {
-      title: "Founder OS",
+      title: "News Analyzer Dashboard",
       description:
-        "Founder OS assignment project with full-stack frontend deployment and structured UI system.",
-      tech: ["Next.js", "TypeScript"],
-      github: "https://github.com/suheeda/founder-os",
-      live: "https://founder-os-frontend.onrender.com/",
+        "End-to-end data engineering pipeline with NewsAPI ingestion, VADER sentiment analysis, SQLite storage, and Streamlit visualization.",
+      tech: ["Python", "Streamlit", "SQLite", "VADER", "NewsAPI"],
+      github: "https://github.com/suheeda/news-analyzer",
+      live: "https://github.com/suheeda/news-analyzer",
+    },
+    {
+      title: "Student Table Assignment",
+      description:
+        "Full-stack student management system with CRUD operations and responsive UI.",
+      tech: ["React", "Node.js", "MongoDB"],
+      github: "https://github.com/suheeda/Full-Stack-Assignment-Students-Table",
+      live: "https://students-table-assignment.netlify.app/",
+    },
+    {
+      title: "Bounty Creation Platform",
+      description:
+        "Full-stack bounty management platform with clean UI and scalable architecture.",
+      tech: ["Next.js", "TypeScript", "Node.js"],
+      github: "https://github.com/suheeda/bounty-creation-platform",
+      live: "https://bounty-creation-platform.netlify.app/",
+    },
+    {
+      title: "Health Risk Predictor App",
+      description:
+        "Streamlit + Scikit-learn based ML app for health risk classification with preprocessing, feature engineering, and data visualization.",
+      tech: ["Python", "Streamlit", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+      github: "https://github.com/suheeda/RiskPredictor",
+      live: "https://secure-encouragement-production-1faf.up.railway.app/",
     },
   ];
 
@@ -127,18 +127,13 @@ export default function Home() {
 
       {/* Animation Section (UNCHANGED) */}
       <section className="h-[200vh] relative">
-        <canvas
-          ref={canvasRef}
-          className="fixed top-0 left-0 w-full h-full z-0"
-        />
-
+        <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0" />
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-10">
           <h1
             key={activeText}
             className="text-4xl md:text-6xl font-semibold text-center 
                        bg-gradient-to-r from-blue-400 to-purple-500 
-                       text-transparent bg-clip-text 
-                       transition-all duration-700 ease-in-out"
+                       text-transparent bg-clip-text"
           >
             {highlights[activeText]}
           </h1>
@@ -191,23 +186,15 @@ export default function Home() {
               </div>
 
               <div className="flex gap-4">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-black transition"
-                >
+                <a href={project.github} target="_blank" rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-black transition">
                   GitHub
                 </a>
 
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a href={project.live} target="_blank" rel="noopener noreferrer"
                   className="px-4 py-2 rounded-lg 
                              bg-gradient-to-r from-blue-500 to-purple-600
-                             text-white hover:scale-105 transition duration-300"
-                >
+                             text-white hover:scale-105 transition duration-300">
                   Live Demo 🚀
                 </a>
               </div>
@@ -232,10 +219,6 @@ export default function Home() {
             Get In Touch
           </h2>
 
-          <p className="text-center text-gray-400 mb-10">
-            Have a project in mind? Let’s build something impactful.
-          </p>
-
           <form
             className="space-y-8"
             onSubmit={(e) => {
@@ -252,14 +235,14 @@ export default function Home() {
           >
             <div className="grid md:grid-cols-2 gap-8">
               <input id="name" type="text" required placeholder="Your Name"
-                className="w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-500 text-white" />
+                className="w-full bg-transparent border-b border-gray-600 py-3 text-white" />
 
               <input id="email" type="email" required placeholder="Your Email"
-                className="w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-500 text-white" />
+                className="w-full bg-transparent border-b border-gray-600 py-3 text-white" />
             </div>
 
             <textarea id="message" rows={4} required placeholder="Tell me about your project..."
-              className="w-full bg-transparent border-b border-gray-600 py-3 focus:outline-none focus:border-purple-500 text-white" />
+              className="w-full bg-transparent border-b border-gray-600 py-3 text-white" />
 
             <button
               type="submit"
@@ -269,22 +252,6 @@ export default function Home() {
               Send Message ✨
             </button>
           </form>
-
-          <div className="mt-10 text-center space-y-3">
-            <a href="mailto:suheedasf10@gmail.com"
-              className="text-purple-400 hover:text-pink-400 transition">
-              📧 suheedasf10@gmail.com
-            </a>
-
-            <br />
-
-            <a href="https://www.linkedin.com/in/suheeda-s-f-21bb45331/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-purple-400 hover:text-pink-400 transition">
-              🔗 LinkedIn Profile
-            </a>
-          </div>
 
         </div>
       </section>
