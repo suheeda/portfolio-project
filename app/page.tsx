@@ -10,7 +10,7 @@ export default function Home() {
   const frameCount = 120;
 
   const highlights = [
-    "Data Engineer",
+    "Data Engineer and Analytics enthusiast",
     "Python-Based Data Processing",
     "Eager to Learn SQL, Pandas & NumPy",
     "Data Validation & Structured Handling",
