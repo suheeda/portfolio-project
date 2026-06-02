@@ -10,7 +10,7 @@ export default function Home() {
   const frameCount = 120;
 
   const highlights = [
-    "Entry-Level Data Engineer",
+    "Data Engineer",
     "Python-Based Data Processing",
     "Eager to Learn SQL, Pandas & NumPy",
     "Data Validation & Structured Handling",
@@ -120,6 +120,14 @@ export default function Home() {
       github: "https://github.com/suheeda/RiskPredictor",
       live: "https://secure-encouragement-production-1faf.up.railway.app/",
     },
+    {
+      title: "Invoice Generator Web App",
+      description:
+        "Invoice management system with automated calculations, GST handling, and PDF export.",
+      tech: ["React", "JavaScript", "PDF"],
+      github: "https://github.com/suheeda/Invoice-generator-web-app",
+  
+   },
   ];
 
   return (
